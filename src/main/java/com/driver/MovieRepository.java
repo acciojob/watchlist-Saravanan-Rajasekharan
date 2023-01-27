@@ -47,11 +47,11 @@ public class MovieRepository {
     }
     //6. Get the list of movies of a director
     public List<String> getMoviesByDirector(String directorName) {
-        List<String> namelist = null;
+        List<String> movielist = new ArrayList<>();
         if(dbMovieDirector.containsKey(directorName)){
-            namelist = dbMovieDirector.get(directorName);
+            movielist = dbMovieDirector.get(directorName);
         }
-        return namelist;
+        return movielist;
     }
     //7. Get all the movies
     public List<String> findAllMovies(){
