@@ -10,8 +10,9 @@ public class MovieRepository {
 
     Map<String,Movie> dbMovie = new HashMap<>();
     Map<String,Director> dbDirector = new HashMap<>();
+    Map<String,List<String>> dbMovieDirector = new HashMap<>();
 
-    Map<String, List<String>> dbMovieDirector = new HashMap<>();
+
 
     // 1.
     public void addMovie(Movie movie){
@@ -31,11 +32,14 @@ public class MovieRepository {
             List<String> movielist = new ArrayList<>();
 
             if(dbMovieDirector.containsKey(director)){
-                movielist = dbMovieDirector.get(director);
+                dbMovieDirector.get(director).add(movie);
+
+            }else{
                 movielist.add(movie);
                 dbMovieDirector.put(director,movielist);
             }
         }
+        return;
     }
     //4.
     public Movie getMovie(String movie){
@@ -48,9 +52,9 @@ public class MovieRepository {
     //6. Get the list of movies of a director
     public List<String> getMoviesByDirector(String directorName) {
         List<String> movielist = new ArrayList<>();
-        if(dbMovieDirector.containsKey(directorName)){
-            movielist = dbMovieDirector.get(directorName);
-        }
+        if(dbMovieDirector.containsKey(directorName))
+            return dbMovieDirector.get(directorName);
+        movielist.add("Pair not found");
         return movielist;
     }
     //7. Get all the movies
@@ -61,7 +65,7 @@ public class MovieRepository {
     //8. Delete a director and movies -  deleteDirectorByName
 
     public void deleteDirectorByName(String director){
-        List<String> movies = new ArrayList<>();
+        List<String> movies;
         if(dbMovieDirector.containsKey(director)){
             movies = dbMovieDirector.get(director);
             for(String movie: movies){

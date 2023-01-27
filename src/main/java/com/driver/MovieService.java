@@ -22,7 +22,7 @@ public class MovieService {
     }
 
     public void addMovieDirectorPair(String movie, String director) {
-        movieRepository.addMovieDirectorPair(movie,director);
+         movieRepository.addMovieDirectorPair(movie,director);
     }
 
     public Movie getMovieByName(String movieName) {

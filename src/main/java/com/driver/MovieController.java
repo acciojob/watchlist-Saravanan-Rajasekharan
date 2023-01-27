@@ -29,8 +29,8 @@ public class MovieController {
     }
     @PutMapping("/add-movie-director-pair")
     public ResponseEntity<String> addMovieDirectorPair(@RequestParam String movie, @RequestParam String director){
-        movieService.addMovieDirectorPair(movie,director);
-        return new ResponseEntity<>("Director movie pair added", HttpStatus.CREATED);
+         movieService.addMovieDirectorPair(movie,director);
+        return new ResponseEntity<>("Director-movies pair added", HttpStatus.CREATED);
     }
 
 
@@ -68,10 +68,10 @@ public class MovieController {
     @DeleteMapping("/delete-director-by-name")
     public ResponseEntity<String> deleteDirectorByName(@RequestParam String director){
         movieService.deleteDirectorByName(director);
-        return new ResponseEntity<>(director +"Removed successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>(director +" Removed successfully", HttpStatus.CREATED);
     }
 
-    @DeleteMapping("delete-all-directors")
+    @DeleteMapping("/delete-all-directors")
     public  ResponseEntity<String> deleteAllDirectors(){
         movieService.deleteAllDirectors();
         return new ResponseEntity<>("All directors and movies deleted", HttpStatus.CREATED);
